@@ -1,0 +1,10 @@
+{
+  "loginPageSuccess": {
+    "email": "gabriel.silva+autoprd@docket.com.br",
+    "password": "D0@tVK5#"
+  },
+  "loginPageInvalid": {
+    "email": "invalid@teste.com",
+    "password": "invalid"
+  }
+}

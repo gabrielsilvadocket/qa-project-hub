@@ -1,0 +1,26 @@
+{
+  "name": "qa-project-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:homolog": "cypress open --env environment=homologation",
+    "cy:prod": "cypress open --env environment=production",
+    "cy:run:homolog": "cypress run --env environment=homologation",
+    "cy:run:prod": "cypress run --env environment=production",
+    "report:merge": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+    "report:generate": "marge cypress/reports/report.json --reportDir cypress/reports/html --inline",
+    "report:full": "npm run report:merge && npm run report:generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^15.12.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
+  }
+}

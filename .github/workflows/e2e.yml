@@ -1,0 +1,75 @@
+name: E2E Tests
+
+on:
+  schedule:
+    # - cron: '0 11 * * 1-5'  # Todo dia útil às 8h!
+  workflow_dispatch:          # Permite rodar manualmente também
+
+jobs:
+  test-homologation:
+    name: Homologation Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar testes em Homologação
+        run: npm run cy:run:homolog
+        env:
+          CYPRESS_HOMOLOG_EMAIL: ${{ secrets.HOMOLOG_EMAIL }}
+          CYPRESS_HOMOLOG_PASSWORD: ${{ secrets.HOMOLOG_PASSWORD }}
+
+      - name: Gerar relatório HTML
+        if: always()
+        run: npm run report:full
+
+      - name: Salvar relatório como artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-homologation-${{ github.run_number }}
+          path: cypress/reports/html/
+
+  test-production:
+    name: Production Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar testes em Produção
+        run: npm run cy:run:prod
+        env:
+          CYPRESS_PROD_EMAIL: ${{ secrets.PROD_EMAIL }}
+          CYPRESS_PROD_PASSWORD: ${{ secrets.PROD_PASSWORD }}
+
+      - name: Gerar relatório HTML
+        if: always()
+        run: npm run report:full
+
+      - name: Salvar relatório como artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-production-${{ github.run_number }}
+          path: cypress/reports/html/
