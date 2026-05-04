@@ -1,0 +1,46 @@
+{
+  "operationName": "Teste Automatizado | Emissão | QA | Cypress End to End",
+  "operationType": "QA",
+  "group": "TI",
+  "costCenter": "QA",
+  "holder": {
+    "cpf": "066.048.293-24",
+    "name": "Teste Automatizado com Cypress",
+    "state": "São Paulo",
+    "city": "São Paulo"
+  },
+  "documents": {
+    "birthCertificate": {
+      "name": "Certidão de Nascimento",
+      "checkboxId": "checkbox-id-nascimento"
+    },
+    "marriageCertificate": {
+      "name": "Certidão de Casamento",
+      "checkboxId": "checkbox-id-casamento"
+    },
+    "deathCertificate": {
+      "name": "Certidão de Óbito",
+      "checkboxId": "checkbox-id-obito"
+    }
+  },
+  "dynamicFields": {
+    "nationality": "Brasileiro",
+    "motherName": "Nome da Mãe QA",
+    "spouseName": "Nome do Cônjuge QA",
+    "rg": "123456789",
+    "registrationNumber": "987654321",
+    "birthDate": "01/01/1990",
+    "deathDate": "01/01/2020",
+    "notary": "Cartório QA"
+  },
+  "expectedSummary": {
+    "operationName": "Teste Automatizado | Emissão | QA | Cypress End to End",
+    "operationType": "QA",
+    "group": "TI",
+    "costCenter": "QA"
+  },
+  "expectedDetails": {
+    "holderName": "Teste Automatizado com Cypress",
+    "holderCpf": "066.048.293-24"
+  }
+}

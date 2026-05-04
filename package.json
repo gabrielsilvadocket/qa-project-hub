@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open",
     "cy:homolog": "cypress open --env environment=homologation",
     "cy:prod": "cypress open --env environment=production",
     "cy:run:homolog": "cypress run --env environment=homologation",
